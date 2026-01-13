@@ -2,35 +2,51 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
-  Building2, 
-  Heart, 
-  ShoppingBag, 
-  Factory, 
-  Landmark,
+  Plane, 
+  Car, 
+  FlaskConical, 
+  Zap, 
+  Dna,
+  Factory,
+  Droplet,
   ArrowRight 
 } from 'lucide-react';
 
 const Industries = () => {
   const industries = [
     {
-      icon: Building2,
-      title: 'Financial Services',
-      description: 'Secure, compliant solutions for banks, insurance companies, and fintech firms.',
-      features: ['Regulatory Compliance', 'Risk Management', 'Digital Banking'],
+      icon: Plane,
+      title: 'Aerospace, Aviation + Defense',
+      description: 'Advanced technology solutions for aerospace, aviation, and defense sectors with mission-critical reliability.',
+      features: ['Flight Systems Integration', 'Defense Compliance', 'Aviation Safety Systems'],
       color: 'from-blue-500 to-cyan-500',
     },
     {
-      icon: Heart,
-      title: 'Healthcare',
-      description: 'HIPAA-compliant solutions to improve patient care and operational efficiency.',
-      features: ['Electronic Health Records', 'Telemedicine', 'Data Security'],
-      color: 'from-red-500 to-pink-500',
+      icon: Car,
+      title: 'Automotive',
+      description: 'Innovative solutions for automotive manufacturers and suppliers driving the future of mobility.',
+      features: ['Connected Vehicles', 'Manufacturing Automation', 'Supply Chain Optimization'],
+      color: 'from-gray-600 to-gray-800',
     },
     {
-      icon: ShoppingBag,
-      title: 'Retail & E-commerce',
-      description: 'Omnichannel solutions to enhance customer experience and drive sales.',
-      features: ['E-commerce Platforms', 'Inventory Management', 'Customer Analytics'],
+      icon: FlaskConical,
+      title: 'Commercial Labs',
+      description: 'Specialized technology solutions for commercial laboratories and testing facilities.',
+      features: ['Lab Information Systems', 'Data Management', 'Quality Assurance'],
+      color: 'from-purple-500 to-pink-500',
+    },
+    {
+      icon: Zap,
+      title: 'Energy',
+      description: 'Smart energy solutions for power generation, distribution, and renewable energy management.',
+      features: ['Grid Management', 'Renewable Energy Systems', 'Energy Analytics'],
+      color: 'from-yellow-500 to-orange-500',
+    },
+    {
+      icon: Dna,
+      title: 'Life Sciences',
+      description: 'Cutting-edge technology solutions for pharmaceutical, biotech, and medical device companies.',
+      features: ['Regulatory Compliance', 'Clinical Data Management', 'Research & Development'],
       color: 'from-green-500 to-emerald-500',
     },
     {
@@ -41,11 +57,11 @@ const Industries = () => {
       color: 'from-orange-500 to-amber-500',
     },
     {
-      icon: Landmark,
-      title: 'Public Sector',
-      description: 'Secure, scalable solutions for government agencies and public services.',
-      features: ['Citizen Services', 'Data Governance', 'Security Compliance'],
-      color: 'from-purple-500 to-indigo-500',
+      icon: Droplet,
+      title: 'Oil + Gas',
+      description: 'Robust technology solutions for upstream, midstream, and downstream oil and gas operations.',
+      features: ['Operations Management', 'Safety & Compliance', 'Asset Optimization'],
+      color: 'from-indigo-500 to-blue-500',
     },
   ];
 
@@ -55,7 +71,7 @@ const Industries = () => {
         <title>Industries We Serve - TechLink</title>
         <meta 
           name="description" 
-          content="TechLink provides specialized technology solutions for financial services, healthcare, retail, manufacturing, and public sector industries." 
+          content="TechLink provides specialized technology solutions for aerospace, automotive, commercial labs, energy, life sciences, manufacturing, and oil & gas industries." 
         />
       </Helmet>
       <div className="pt-28 md:pt-32 pb-24 bg-gradient-to-br from-gray-50 to-white">

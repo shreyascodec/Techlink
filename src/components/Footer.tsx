@@ -36,11 +36,13 @@ const Footer = () => {
       { name: 'Custom Development', href: '/services/custom-development' },
     ],
     industries: [
-      { name: 'Financial Services', href: '/industries' },
-      { name: 'Healthcare', href: '/industries' },
-      { name: 'Retail & E-commerce', href: '/industries' },
+      { name: 'Aerospace, Aviation + Defense', href: '/industries' },
+      { name: 'Automotive', href: '/industries' },
+      { name: 'Commercial Labs', href: '/industries' },
+      { name: 'Energy', href: '/industries' },
+      { name: 'Life Sciences', href: '/industries' },
       { name: 'Manufacturing', href: '/industries' },
-      { name: 'Public Sector', href: '/industries' },
+      { name: 'Oil + Gas', href: '/industries' },
     ],
     resources: [
       { name: 'Blog', href: '/resources' },
