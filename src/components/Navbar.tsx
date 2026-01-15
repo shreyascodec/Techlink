@@ -43,14 +43,19 @@ const Navbar = () => {
     },
     { 
       name: 'Resources', 
-      href: '/resources', 
+      href: '#', 
       hasDropdown: true,
       dropdownItems: [
-        { name: 'Blog', href: '/resources#blog' },
+        { name: 'Blog', href: '/blog' },
         { name: 'Case Studies', href: '/case-studies' },
-        { name: 'Whitepapers', href: '/resources#whitepapers' },
-        { name: 'Webinars', href: '/resources#webinars' },
+        { name: 'Whitepapers', href: '/whitepapers' },
+        { name: 'Webinars', href: '/webinars' },
       ]
+    },
+    { 
+      name: 'Insights', 
+      href: '/insights', 
+      hasDropdown: false 
     },
   ];
 
@@ -90,17 +95,30 @@ const Navbar = () => {
                 onMouseEnter={() => link.hasDropdown && setOpenDropdown(link.name)}
                 onMouseLeave={() => setOpenDropdown(null)}
               >
-                <Link
-                  to={link.href}
-                  className={`transition-all font-medium flex items-center gap-1.5 px-4 py-2.5 rounded-lg ${
-                    location.pathname === link.href
-                      ? 'text-primary-600 bg-primary-50'
-                      : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                  }`}
-                >
-                  <span className="text-sm md:text-base">{link.name}</span>
-                  {link.hasDropdown && <ChevronDown className="w-3.5 h-3.5" />}
-                </Link>
+                {link.hasDropdown ? (
+                  <div
+                    onClick={(e) => e.preventDefault()}
+                    className={`transition-all font-medium flex items-center gap-1.5 px-4 py-2.5 rounded-lg cursor-pointer ${
+                      link.dropdownItems?.some(item => location.pathname === item.href)
+                        ? 'text-primary-600 bg-primary-50'
+                        : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                    }`}
+                  >
+                    <span className="text-sm md:text-base">{link.name}</span>
+                    <ChevronDown className="w-3.5 h-3.5" />
+                  </div>
+                ) : (
+                  <Link
+                    to={link.href}
+                    className={`transition-all font-medium flex items-center gap-1.5 px-4 py-2.5 rounded-lg ${
+                      location.pathname === link.href
+                        ? 'text-primary-600 bg-primary-50'
+                        : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                    }`}
+                  >
+                    <span className="text-sm md:text-base">{link.name}</span>
+                  </Link>
+                )}
                 {link.hasDropdown && link.dropdownItems && (
                   <AnimatePresence>
                     {openDropdown === link.name && (
@@ -130,12 +148,6 @@ const Navbar = () => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
-            <Link
-              to="/contact"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors px-3 py-2 text-sm md:text-base"
-            >
-              Sign in
-            </Link>
             <Link to="/contact">
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -168,22 +180,39 @@ const Navbar = () => {
           >
             <div className="px-4 py-4 space-y-4">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className="block text-gray-700 hover:text-primary-600 font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
+                <div key={link.name}>
+                  {link.hasDropdown ? (
+                    <>
+                      <div className="block text-gray-700 font-medium mb-2">
+                        {link.name}
+                      </div>
+                      {link.dropdownItems && (
+                        <div className="pl-4 space-y-2 mt-2">
+                          {link.dropdownItems.map((item) => (
+                            <Link
+                              key={item.name}
+                              to={item.href}
+                              className="block text-sm text-gray-600 hover:text-primary-600"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="block text-gray-700 hover:text-primary-600 font-medium mb-2"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
+                </div>
               ))}
               <div className="pt-4 border-t border-gray-200 space-y-3">
-                <Link
-                  to="/contact"
-                  className="block text-gray-700 hover:text-primary-600 font-medium"
-                >
-                  Sign in
-                </Link>
                 <Link to="/contact" className="block">
                   <button className="w-full bg-primary-600 text-white px-6 py-2.5 rounded-lg font-medium hover:bg-primary-700 transition-colors">
                     Contact Us

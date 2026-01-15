@@ -17,6 +17,7 @@ const Industries = () => {
     {
       icon: Plane,
       title: 'Aerospace, Aviation + Defense',
+      slug: 'aerospace-aviation-defense',
       description: 'Advanced technology solutions for aerospace, aviation, and defense sectors with mission-critical reliability.',
       features: ['Flight Systems Integration', 'Defense Compliance', 'Aviation Safety Systems'],
       color: 'from-blue-500 to-cyan-500',
@@ -24,6 +25,7 @@ const Industries = () => {
     {
       icon: Car,
       title: 'Automotive',
+      slug: 'automotive',
       description: 'Innovative solutions for automotive manufacturers and suppliers driving the future of mobility.',
       features: ['Connected Vehicles', 'Manufacturing Automation', 'Supply Chain Optimization'],
       color: 'from-gray-600 to-gray-800',
@@ -31,6 +33,7 @@ const Industries = () => {
     {
       icon: FlaskConical,
       title: 'Commercial Labs',
+      slug: 'commercial-labs',
       description: 'Specialized technology solutions for commercial laboratories and testing facilities.',
       features: ['Lab Information Systems', 'Data Management', 'Quality Assurance'],
       color: 'from-purple-500 to-pink-500',
@@ -38,6 +41,7 @@ const Industries = () => {
     {
       icon: Zap,
       title: 'Energy',
+      slug: 'energy',
       description: 'Smart energy solutions for power generation, distribution, and renewable energy management.',
       features: ['Grid Management', 'Renewable Energy Systems', 'Energy Analytics'],
       color: 'from-yellow-500 to-orange-500',
@@ -45,6 +49,7 @@ const Industries = () => {
     {
       icon: Dna,
       title: 'Life Sciences',
+      slug: 'life-sciences',
       description: 'Cutting-edge technology solutions for pharmaceutical, biotech, and medical device companies.',
       features: ['Regulatory Compliance', 'Clinical Data Management', 'Research & Development'],
       color: 'from-green-500 to-emerald-500',
@@ -52,6 +57,7 @@ const Industries = () => {
     {
       icon: Factory,
       title: 'Manufacturing',
+      slug: 'manufacturing',
       description: 'Industry 4.0 solutions for smart factories and supply chain optimization.',
       features: ['IoT Integration', 'Predictive Maintenance', 'Supply Chain Management'],
       color: 'from-orange-500 to-amber-500',
@@ -59,6 +65,7 @@ const Industries = () => {
     {
       icon: Droplet,
       title: 'Oil + Gas',
+      slug: 'oil-gas',
       description: 'Robust technology solutions for upstream, midstream, and downstream oil and gas operations.',
       features: ['Operations Management', 'Safety & Compliance', 'Asset Optimization'],
       color: 'from-indigo-500 to-blue-500',
@@ -124,7 +131,7 @@ const Industries = () => {
                     ))}
                   </ul>
                   <Link
-                    to="/contact"
+                    to={`/industries/${industry.slug}`}
                     className="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 group-hover:gap-2 transition-all"
                   >
                     Learn More

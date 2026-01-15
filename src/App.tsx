@@ -8,19 +8,26 @@ import Services from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
 import About from './pages/About';
 import Industries from './pages/Industries';
-import Resources from './pages/Resources';
-import Contact from './pages/Contact';
+import IndustryDetail from './pages/IndustryDetail';
+import Blog from './pages/Blog';
 import CaseStudies from './pages/CaseStudies';
+import Whitepapers from './pages/Whitepapers';
+import Webinars from './pages/Webinars';
+import Insights from './pages/Insights';
+import Contact from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import CookiePolicy from './pages/CookiePolicy';
+import SignIn from './pages/SignIn';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   const location = useLocation();
+  const isCMSRoute = location.pathname === '/signin' || location.pathname === '/dashboard';
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
+      {!isCMSRoute && <Navbar />}
       <main>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
@@ -65,10 +72,18 @@ function App() {
               }
             />
             <Route
-              path="/resources"
+              path="/industries/:slug"
               element={
                 <PageTransition>
-                  <Resources />
+                  <IndustryDetail />
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/blog"
+              element={
+                <PageTransition>
+                  <Blog />
                 </PageTransition>
               }
             />
@@ -77,6 +92,30 @@ function App() {
               element={
                 <PageTransition>
                   <CaseStudies />
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/whitepapers"
+              element={
+                <PageTransition>
+                  <Whitepapers />
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/webinars"
+              element={
+                <PageTransition>
+                  <Webinars />
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/insights"
+              element={
+                <PageTransition>
+                  <Insights />
                 </PageTransition>
               }
             />
@@ -112,10 +151,18 @@ function App() {
                 </PageTransition>
               }
             />
+            <Route
+              path="/signin"
+              element={<SignIn />}
+            />
+            <Route
+              path="/dashboard"
+              element={<Dashboard />}
+            />
           </Routes>
         </AnimatePresence>
       </main>
-      <Footer />
+      {!isCMSRoute && <Footer />}
     </div>
   );
 }

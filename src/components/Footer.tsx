@@ -35,27 +35,18 @@ const Footer = () => {
       { name: 'IT Consulting', href: '/services/it-consulting' },
       { name: 'Custom Development', href: '/services/custom-development' },
     ],
-    industries: [
-      { name: 'Aerospace, Aviation + Defense', href: '/industries' },
-      { name: 'Automotive', href: '/industries' },
-      { name: 'Commercial Labs', href: '/industries' },
-      { name: 'Energy', href: '/industries' },
-      { name: 'Life Sciences', href: '/industries' },
-      { name: 'Manufacturing', href: '/industries' },
-      { name: 'Oil + Gas', href: '/industries' },
-    ],
     resources: [
-      { name: 'Blog', href: '/resources' },
+      { name: 'Blog', href: '/blog' },
       { name: 'Case Studies', href: '/case-studies' },
-      { name: 'Whitepapers', href: '/resources' },
-      { name: 'Webinars', href: '/resources' },
+      { name: 'Whitepapers', href: '/whitepapers' },
+      { name: 'Webinars', href: '/webinars' },
       { name: 'Support', href: '/contact' },
     ],
     company: [
       { name: 'About Us', href: '/about' },
       { name: 'Leadership', href: '/about' },
       { name: 'Careers', href: '/contact' },
-      { name: 'Newsroom', href: '/resources' },
+      { name: 'Newsroom', href: '/insights' },
       { name: 'Contact Us', href: '/contact' },
     ],
   };
@@ -64,7 +55,7 @@ const Footer = () => {
     <footer className="bg-gray-900 text-gray-300 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 mb-12 items-start">
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <motion.div
@@ -85,11 +76,11 @@ const Footer = () => {
               </p>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-gray-400">
-                  <Mail className="w-5 h-5" />
+                  <Mail className="w-5 h-5 flex-shrink-0" />
                   <span>contact@techlink.com</span>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-400">
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-5 h-5 flex-shrink-0" />
                   <span>+91-9156031867</span>
                 </div>
                 <div className="flex items-start space-x-3 text-gray-400">
@@ -100,7 +91,7 @@ const Footer = () => {
             </motion.div>
           </div>
 
-          {/* Links Columns */}
+          {/* Links Columns - Services, Resources, Company */}
           {Object.entries(footerLinks).map(([category, links], index) => (
             <motion.div
               key={category}
@@ -108,6 +99,7 @@ const Footer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="flex flex-col"
             >
               <h4 className="text-white font-semibold mb-4 capitalize">
                 {category}
