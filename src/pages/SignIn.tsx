@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
@@ -11,6 +11,14 @@ const SignIn = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    // Redirect to dashboard if already authenticated
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    if (isAuthenticated) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [navigate]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -19,14 +27,20 @@ const SignIn = () => {
     // Simple authentication check
     // In production, this would connect to your backend
     if (email && password) {
-      // Store authentication in localStorage
-      localStorage.setItem('isAuthenticated', 'true');
-      localStorage.setItem('userEmail', email);
-      
-      // Redirect to dashboard
-      setTimeout(() => {
-        navigate('/dashboard');
-      }, 500);
+      try {
+        // Simulate API call delay
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Store authentication in localStorage
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('userEmail', email);
+        
+        // Redirect to dashboard
+        navigate('/dashboard', { replace: true });
+      } catch (err) {
+        setError('An error occurred during sign in. Please try again.');
+        setIsLoading(false);
+      }
     } else {
       setError('Please enter both email and password');
       setIsLoading(false);

@@ -1,4 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -24,6 +25,11 @@ import Dashboard from './pages/Dashboard';
 function App() {
   const location = useLocation();
   const isCMSRoute = location.pathname === '/signin' || location.pathname === '/dashboard';
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen bg-white">
